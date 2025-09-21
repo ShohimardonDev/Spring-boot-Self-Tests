@@ -3,6 +3,7 @@ package uz.ssh.springboottesting.controller.car;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import uz.ssh.springboottesting.model.car.Car;
 import uz.ssh.springboottesting.service.car.CarService;
@@ -18,7 +19,7 @@ public class CarController {
     private final CarService carService;
 
     @PostMapping
-    public Car save() {
+    public Car save(@RequestParam(name = "credit_amount") Double creditAmount) {
         return carService.save();
     }
 

@@ -31,6 +31,7 @@ public class UserService extends BaseTemplateService<UserDto, UserResDto, User, 
 
     @Override
     protected User save(User entity) {
+
         return entity;
     }
 
@@ -52,17 +53,5 @@ public class UserService extends BaseTemplateService<UserDto, UserResDto, User, 
     @Override
     protected List<UserResDto> filter(UserFilter userFilter, Pageable pageable) {
         return List.of();
-    }
-
-    @Override
-    protected void postCreate(User entity, UserResDto response) {
-        log.info("Post Create {}", entity);
-        super.postCreate(entity, response);
-    }
-
-    @Override
-    protected void preCreate(UserDto input) {
-        log.info("Pre Create {}", input);
-        super.preCreate(input);
     }
 }

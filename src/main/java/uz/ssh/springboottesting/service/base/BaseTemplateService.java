@@ -49,9 +49,6 @@ public abstract class BaseTemplateService<I, R, E, ID, F extends BaseFilter<ID>>
     }
 
     public final List<R> getAll(F f) {
-//        SpringDataWebProperties.Sort sort = SpringDataWebProperties.Sort.by(Sort.Direction.fromString(orderFilter.getSortDir().toUpperCase()), orderFilter.getSortName());
-//
-//        PageRequest pageable = PageRequest.of(orderFilter.getPage(), orderFilter.getSize(), sort);
 
         return getAll(f, null);
     }
