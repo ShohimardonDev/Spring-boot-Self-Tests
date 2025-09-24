@@ -12,6 +12,7 @@ public class EmailUser implements Observer {
 
     @Override
     public void update(String weather) {
+
         System.out.println("weather = " + weather + "\n" + email);
     }
 }
