@@ -1,33 +1,88 @@
 package uz.ssh.springboottesting.service.car;
 
-import com.github.javafaker.Faker;
-import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Service;
-import uz.ssh.springboottesting.constant.enums.EngineType;
-import uz.ssh.springboottesting.model.car.Car;
-import uz.ssh.springboottesting.service.validation.CarEngineValidator;
 
-/**
- * @author Shokhimardon
- * @since 9/16/25
- */
-@Service
-@RequiredArgsConstructor
-public class CarService {
-    private final CarEngineValidator carEngineValidator;
-    private final Faker faker;
+import java.util.List;
+import java.util.Optional;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import uz.ssh.springboottesting.model.car.dto.CarDTO;
 
-    public Car save() {
-        var car = new Car();
+ public interface CarService {
 
-        car.setBrand(faker.company().name());
-        car.setModel(faker.letterify("Model-???"));
-        car.setEngineType(EngineType.values()[faker.random().nextInt(EngineType.values().length)]);
-        car.setYear(faker.number().numberBetween(1995, 2025));
-        car.setPlateNumber(faker.bothify("??-####"));
-        carEngineValidator.validate(car);
-        return car;
-    }
+    /**
+    * Save a car.
+    *
+    * @param carDTO the entity to save.
+    * @return the persisted entity.
+    */
+    CarDTO save(CarDTO carDTO);
 
+    /**
+    * Update a car.
+    *
+    * @param carDTO the entity to update.
+    * @return the persisted entity.
+    */
+    CarDTO update(CarDTO carDTO);
+
+    /**
+    * Partially update a car.
+    *
+    * @param carDTO the entity to update partially.
+    * @return the persisted entity.
+    */
+    Optional<CarDTO> partialUpdate(CarDTO carDTO);
+
+    /**
+    * Get all the cars.
+    *
+    * @return the list of entities.
+    */
+    List<CarDTO> findAll();
+
+    /**
+    * Get all the cars with pagination.
+    *
+    * @param pageable the pagination information.
+    * @return the list of entities.
+    */
+    Page<CarDTO> findAll(Pageable pageable);
+
+    /**
+    * Get the "id" car.
+    *
+    * @param id the id of the entity.
+    * @return the entity.
+    */
+    Optional<CarDTO> findOne(String id);
+
+    /**
+    * Delete the "id" car.
+    *
+    * @param id the id of the entity.
+    */
+    void delete(String id);
+
+    /**
+    * Count total number of cars.
+    *
+    * @return the total count.
+    */
+    long count();
+
+    /**
+    * Check if a car exists by id.
+    *
+    * @param id the id to check.
+    * @return true if exists, false otherwise.
+    */
+    boolean existsById(String id);
+
+    /**
+    * Delete multiple cars by their ids.
+    *
+    * @param ids the list of ids to delete.
+    */
+    void deleteByIds(List<String> ids);
 
 }
