@@ -50,7 +50,21 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+
+
+        <!-- TDLight Telegram Client -->
+        <dependency>
+            <groupId>it.tdlight</groupId>
+            <artifactId>tdlight-java</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>it.tdlight</groupId>
+            <artifactId>tdlight-natives</artifactId>
+            <classifier>linux_amd64_gnu_ssl1</classifier>
+        </dependency>
 	</dependencies>
+
+
 
 	<build>
 		<plugins>
